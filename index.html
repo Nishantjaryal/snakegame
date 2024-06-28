@@ -5,17 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="./script.js"  type="module" async></script>
-    <script src="./snake.js"  type="module" async></script>
+    <script src="./script.js" type="module" async></script>
+    <script src="./snake.js" type="module" async></script>
   </head>
   <body>
-
     <div id="loader">
-      
+      <div id="config">
+        <p id="warning">This feature is only for testing yet</p>
+
+        <p>Apply custom image URL for snake</p>
+        <input type="text" id="img_snake">
+        <p>Apply custom image URL for food</p>
+        <input type="text" id="img_food">
+
+        <button id="run">Set</button>
+
+        <button id="start">Start</button>
+        <div>
+          <div id="snake"></div>
+          <div id="food"></div>
+        </div>
+
+      </div>
     </div>
-    <div id="filter">
-      Exclusively For Laptops & PC
-    </div>
+    <div id="filter">Exclusively For Laptops & PC</div>
     <div id="settings"></div>
     <div id="playstation">
       <button id="toggleScore"></button>
@@ -27,7 +40,6 @@
         </div>
       </div>
       <div id="board"></div>
-      
     </div>
     <!-- <div id="intro"></div> -->
   </body>

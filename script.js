@@ -4,15 +4,14 @@ const gameBoard = document.getElementById('board')
 import { update as updateFood, draw as DrawFood } from "./food.js";
 import { outSideGrid } from "./grid.js";
 
-
-
+const load_template = document.getElementById("loader")
+const start_btn = document.getElementById("start")
 
 let lastRenderTime = 0
 let gameOver = false;
 
 const checkDeath = ()=>{
-    gameOver = outSideGrid(getSnakeHead()) || snakeIntersection()
-     
+    gameOver = outSideGrid(getSnakeHead()) || snakeIntersection()  
 }
 
 function update() {
@@ -54,5 +53,9 @@ function main(currTime) {            // game loop function
     draw();
 }
 
-window.requestAnimationFrame(main) // requesting window that when to render next frame
+    window.requestAnimationFrame(main) // requesting window that when to render next frame
 
+
+start_btn.addEventListener("click",()=>{
+    load_template.style.top = "-100%"
+})

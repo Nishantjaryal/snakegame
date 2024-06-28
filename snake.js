@@ -7,13 +7,24 @@ let score = 0
 const scoreCard = document.querySelector("#score h1")
 const highestScore = document.querySelector("#highest h1")
 const highestDiv = document.querySelector("#highest")
+const test_btn = document.getElementById("run")
+const snake_div = document.getElementById("snake")
+const food_div = document.getElementById("food")
+const snake_game = document.querySelectorAll(".snake")
+const food_game = document.querySelectorAll(".food")
+test_btn.addEventListener("click", () => {
+    snake_div.style.backgroundImage = `url(${document.getElementById("img_snake").value})`
+    food_div.style.backgroundImage = `url(${document.getElementById("img_food").value})`
+    // food_game[0].style.backgroundImage = `url(${document.getElementById("img_food").value})`
+    // snake_game[0].backgroundImage = `url(${document.getElementById("img_snake").value})`
+})
 
 const SnakeBody = [
     { x: 11, y: 11 }, // Head of the snake
 ];
 
 function cardSet(score) {
-    console.log(score,Number(localStorage.getItem("maxScore")))
+    console.log(score, Number(localStorage.getItem("maxScore")))
     if (score > Number(localStorage.getItem("maxScore"))) {
         highestDiv.style.height = "90%";
         highestScore.style.margin = "23% 0 0 0";
@@ -32,6 +43,8 @@ function addSegments_3() {
         // SnakeBody.push({ ...SnakeBody[SnakeBody.length - 1] })
     }
     cardSet(score)
+
+
 
     if (!localStorage.getItem("maxScore") || score > Number(localStorage.getItem("maxScore"))) {
         localStorage.setItem("maxScore", String(score))
@@ -59,11 +72,16 @@ function addSegments_2() {
 
 }
 function addSegments_1() {
+
+
     for (let i = 0; i < newSegments; i++) {
         SnakeBody[SnakeBody.length] = { ...SnakeBody[SnakeBody.length - 1] }
         score++
     }
+
     cardSet(score)
+
+
 
     if (!localStorage.getItem("maxScore") || score > Number(localStorage.getItem("maxScore"))) {
         localStorage.setItem("maxScore", String(score))
@@ -81,7 +99,6 @@ export function update() {
 
 
     addSegments_3()
-
     const inputDir = getinputDir()
 
 
@@ -109,6 +126,8 @@ export function draw(gameBoard) {
         gameBoard.appendChild(SnakeBlock)
     })
 }
+
+
 
 
 export function expandSnake(rate) {

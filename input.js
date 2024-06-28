@@ -1,3 +1,7 @@
+
+
+
+
 let inputDirections = { // by x and y coordinations we satisfy iwhich direction to go
     x: 0,
     y: 0
