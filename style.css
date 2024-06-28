@@ -21,8 +21,10 @@ body {
     position: absolute;
     inset: 0;
     z-index: 99;
-    background-color: #171717;
-    background-image: ;
+    background-color: #000000;
+    background-image: url("./snake/bg.png");
+    background-position: center;
+    background-size: cover;
 }
 
 #filter {
