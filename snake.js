@@ -3,9 +3,9 @@ import { getinputDir } from "./input.js";
 export const SnakeSpeed = 3;
 let newSegments = 0;
 
-const SnakeBody = [{ x: 11, y: 11 },
-{ x: 12, y: 11 },
-] // coordinates
+const SnakeBody = [
+    { x: 11, y: 11 }, // Head of the snake
+];
 
 
 function addSegments() {
@@ -51,33 +51,29 @@ export function expandSnake(rate) {
     newSegments += rate
 }
 
-function equalPositions(position1, position2) {
-    return position1.x === position2.x && position1.y === position2.y
-}
-
-
-export function onSnake(position, { ignoreHead = false } = {}) {     
-    return SnakeBody.some((block, index) => {
-            if (ignoreHead && index === 0) {
-                return false // to ignore the head by get head function
-            }
-            
-                return equalPositions(block, position)
-            
-        
-
-
-    })
-}
-
-
 export function getSnakeHead() {
     return SnakeBody[0]
 }
 
 
-///////////////// not working
+function equalPositions(pos1, pos2) {
+    return pos1.x === pos2.x && pos1.y === pos2.y;
+}
 
-// export function snakeIntersection() {
-//     return onSnake(SnakeBody[0], { ignoreHead: true })
-// }
+export function onSnake(position, { ignoreHead = false } = {}) {
+    return SnakeBody.some((block, index) => {
+        // console.log(`ignoreHead: ${ignoreHead}, index: ${index}, block: ${JSON.stringify(block)}, position: ${JSON.stringify(position)}`);
+        if (ignoreHead && index === 0) {
+            return false;
+        } else {
+            return equalPositions(block, position);
+        }
+    });
+}
+
+export function snakeIntersection() {
+    return onSnake(SnakeBody[0], { ignoreHead: true });
+}
+
+// Example usage:
+console.log(snakeIntersection()); // Output will depend on the SnakeBody configuration

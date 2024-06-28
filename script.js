@@ -1,4 +1,4 @@
-import { update as updateSnake, draw as DrawSnake, SnakeSpeed, getSnakeHead  } from "./snake.js"
+import { update as updateSnake, draw as DrawSnake, SnakeSpeed, getSnakeHead, snakeIntersection } from "./snake.js"
 const gameBoard = document.getElementById('board')
 
 import { update as updateFood, draw as DrawFood } from "./food.js";
@@ -11,9 +11,8 @@ let lastRenderTime = 0
 let gameOver = false;
 
 const checkDeath = ()=>{
-    gameOver = outSideGrid(getSnakeHead()) 
-    // console.log(outSideGrid(getSnakeHead()))
-    // console.log(snakeIntersection())
+    gameOver = outSideGrid(getSnakeHead()) || snakeIntersection()
+     
 }
 
 function update() {
@@ -33,7 +32,7 @@ function draw() {
     DrawFood(gameBoard)
 }
 
-function main(currTime) {
+function main(currTime) {            // game loop function
     if (gameOver){
         return alert("snake is dead")
     }
