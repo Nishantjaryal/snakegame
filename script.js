@@ -34,7 +34,7 @@ function draw() {
 
 function main(currTime) {            // game loop function
     if (gameOver){
-        return alert("snake is dead")
+        return 
     }
     window.requestAnimationFrame(main) // repeating itself // behaviouring as counter
     const secSinceLastRender = (currTime - lastRenderTime) / 1000; // delay within each frame
@@ -55,3 +55,4 @@ function main(currTime) {            // game loop function
 }
 
 window.requestAnimationFrame(main) // requesting window that when to render next frame
+
