@@ -31,6 +31,10 @@ export function draw(gameBoard) {
         FoodBlock.style.gridRowStart = food.y;
         FoodBlock.style.gridColumnStart = food.x;
         FoodBlock.classList.add('food')
+        if(document.getElementById("img_food").value){
+            
+        }
+        FoodBlock.style.backgroundImage = `url(${document.getElementById("img_food").value})`
         gameBoard.appendChild(FoodBlock)
 
 }

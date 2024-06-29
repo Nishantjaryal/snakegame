@@ -1,22 +1,30 @@
 import { getinputDir } from "./input.js";
 
-export const SnakeSpeed = 5;
+
+
 let newSegments = 0;
 let score = 0
 
+let speed = document.getElementById("speed").value
 const scoreCard = document.querySelector("#score h1")
 const highestScore = document.querySelector("#highest h1")
 const highestDiv = document.querySelector("#highest")
 const test_btn = document.getElementById("run")
 const snake_div = document.getElementById("snake")
+const snake_div_body = document.getElementById("snake_body")
 const food_div = document.getElementById("food")
-const snake_game = document.querySelectorAll(".snake")
-const food_game = document.querySelectorAll(".food")
+
 test_btn.addEventListener("click", () => {
-    snake_div.style.backgroundImage = `url(${document.getElementById("img_snake").value})`
-    food_div.style.backgroundImage = `url(${document.getElementById("img_food").value})`
-    // food_game[0].style.backgroundImage = `url(${document.getElementById("img_food").value})`
-    // snake_game[0].backgroundImage = `url(${document.getElementById("img_snake").value})`
+    if (document.getElementById("img_snake").value) {
+        snake_div.style.backgroundImage = `url(${document.getElementById("img_snake").value})`
+    }
+    if (document.getElementById("img_snake_body").value) {
+        snake_div_body.style.backgroundImage = `url(${document.getElementById("img_snake_body").value})`
+    }
+    if (document.getElementById("img_food").value) {
+        food_div.style.backgroundImage = `url(${document.getElementById("img_food").value})`
+    }
+
 })
 
 const SnakeBody = [
@@ -38,11 +46,14 @@ function addSegments_3() {
         SnakeBody[SnakeBody.length] = { ...SnakeBody[SnakeBody.length - 1] }
         SnakeBody[SnakeBody.length] = { ...SnakeBody[SnakeBody.length - 2] }
         SnakeBody[SnakeBody.length] = { ...SnakeBody[SnakeBody.length - 3] }
+
         score += 3
+
         // similarly: to duplicate
         // SnakeBody.push({ ...SnakeBody[SnakeBody.length - 1] })
     }
     cardSet(score)
+
 
 
 
@@ -96,9 +107,23 @@ function addSegments_1() {
 
 export function update() {
 
+    const growth = document.getElementById("growth").value
 
 
-    addSegments_3()
+    if (growth == 1) {
+        addSegments_1()
+    }
+    else if (growth == 2) {
+        addSegments_2()
+    }
+    else if (growth == 3) {
+        addSegments_3()
+    }
+    else {
+        addSegments_1()
+    }
+
+
     const inputDir = getinputDir()
 
 
@@ -113,6 +138,7 @@ export function update() {
     // SnakeBody[0].y += 0;
     SnakeBody[0].x += inputDir.x;  // moving
     SnakeBody[0].y += inputDir.y;
+
 }
 
 export function draw(gameBoard) {
@@ -123,7 +149,14 @@ export function draw(gameBoard) {
         SnakeBlock.style.gridRowStart = block.y;
         SnakeBlock.style.gridColumnStart = block.x;
         SnakeBlock.classList.add('snake')
+        if (document.getElementById("img_snake").value) {
+            SnakeBlock.style.backgroundImage = `url(${document.getElementById("img_snake_body").value})`
+        }
+
         gameBoard.appendChild(SnakeBlock)
+        if (document.getElementById("img_snake").value) {
+            gameBoard.querySelector(".snake:first-child").style.backgroundImage = `url(${document.getElementById("img_snake").value})`
+        }
     })
 }
 
@@ -157,6 +190,7 @@ export function onSnake(position, { ignoreHead = false } = {}) {
 export function snakeIntersection() {
     return onSnake(SnakeBody[0], { ignoreHead: true });
 }
+
 
 // Example usage:
 console.log(snakeIntersection()); // Output will depend on the SnakeBody configuration

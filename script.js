@@ -1,11 +1,17 @@
-import { update as updateSnake, draw as DrawSnake, SnakeSpeed, getSnakeHead, snakeIntersection } from "./snake.js"
+import { update as updateSnake, draw as DrawSnake, getSnakeHead, snakeIntersection } from "./snake.js"
 const gameBoard = document.getElementById('board')
 
+let SnakeSpeed = 3;
 import { update as updateFood, draw as DrawFood } from "./food.js";
 import { outSideGrid } from "./grid.js";
 
 const load_template = document.getElementById("loader")
 const start_btn = document.getElementById("start")
+const start_btn2 = document.getElementById("start2")
+const setting_main = document.getElementById("Advance_setting")
+const setting_Adv = document.getElementById("base_setting")
+const hide_main = document.querySelector(".hide_main")
+const hide_adv = document.querySelector(".hide_adv")
 
 let lastRenderTime = 0
 let gameOver = false;
@@ -35,6 +41,12 @@ function main(currTime) {            // game loop function
     if (gameOver){
         return 
     }
+
+    let speed = document.getElementById("speed").value
+    if(speed) {
+        SnakeSpeed = speed;
+    }
+
     window.requestAnimationFrame(main) // repeating itself // behaviouring as counter
     const secSinceLastRender = (currTime - lastRenderTime) / 1000; // delay within each frame
     if (secSinceLastRender < 1 / SnakeSpeed) return // to allow required no. of counts per seconds
@@ -58,4 +70,15 @@ function main(currTime) {            // game loop function
 
 start_btn.addEventListener("click",()=>{
     load_template.style.top = "-100%"
+})
+start_btn2.addEventListener("click",()=>{
+    load_template.style.top = "-100%"
+})
+setting_main.addEventListener("click",()=>{
+    hide_adv.style.display = "block"
+    hide_main.style.display = "none"
+})
+setting_Adv.addEventListener("click",()=>{
+     hide_adv.style.display = "none"
+    hide_main.style.display = "block"
 })
