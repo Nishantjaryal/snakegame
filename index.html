@@ -3,18 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Hungary Snake</title>
+    <link rel="shortcut icon" href="./snake/sn.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css" />
     <script src="./script.js" type="module" async></script>
     <script src="./snake.js" type="module" async></script>
   </head>
   <body>
+    <div id="restart">
+      <form action="/">
+        <h1>Restart Game</h1>
+        <button id="button">restart</button>
+      </form>
+    </div>
     <div id="loader">
       <div class="hide_adv" id="config">
-
         <p>Apply custom image URL for snake</p>
         <input type="url" id="img_snake">
-        <p>Apply custom image URL for food</p>
+        <p>Apply custom image URL for snake body</p>
         <input type="url" id="img_snake_body">
         <p>Apply custom image URL for food</p>
         <input type="url" id="img_food">

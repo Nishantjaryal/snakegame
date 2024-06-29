@@ -30,6 +30,34 @@ body {
   justify-content: flex-end;
   transition: all 0.25s;
 }
+#restart {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  background-color: #00000092;
+  background-position: center;
+  background-size: cover;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s;
+  text-align: center;
+}
+
+#restart h1{
+  margin-bottom: 20px;
+  text-align: center;
+  color:white
+}
+
+#restart #button{
+  padding:12px 20px;
+  background-color: #363535;
+  border: 2px solid white;
+  color: white;
+}
 
 #config {
   padding: 20px;
@@ -200,6 +228,7 @@ body {
   grid-template-columns: repeat(21, 1fr);
 }
 .snake {
+  background: greenyellow;
   background-image: url("./snake/bd.png");
   background-position: center;
   background-size: cover;

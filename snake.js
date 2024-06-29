@@ -27,7 +27,7 @@ test_btn.addEventListener("click", () => {
 
 })
 
-const SnakeBody = [
+export const SnakeBody = [
     { x: 11, y: 11 }, // Head of the snake
 ];
 
@@ -149,7 +149,7 @@ export function draw(gameBoard) {
         SnakeBlock.style.gridRowStart = block.y;
         SnakeBlock.style.gridColumnStart = block.x;
         SnakeBlock.classList.add('snake')
-        if (document.getElementById("img_snake").value) {
+        if (document.getElementById("img_snake_body").value) {
             SnakeBlock.style.backgroundImage = `url(${document.getElementById("img_snake_body").value})`
         }
 

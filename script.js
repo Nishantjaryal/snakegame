@@ -12,12 +12,13 @@ const setting_main = document.getElementById("Advance_setting")
 const setting_Adv = document.getElementById("base_setting")
 const hide_main = document.querySelector(".hide_main")
 const hide_adv = document.querySelector(".hide_adv")
+const restart = document.getElementById("restart")
 
 let lastRenderTime = 0
 let gameOver = false;
 
-const checkDeath = ()=>{
-    gameOver = outSideGrid(getSnakeHead()) || snakeIntersection()  
+const checkDeath = () => {
+    gameOver = outSideGrid(getSnakeHead()) || snakeIntersection()
 }
 
 function update() {
@@ -38,12 +39,13 @@ function draw() {
 }
 
 function main(currTime) {            // game loop function
-    if (gameOver){
-        return 
+    if (gameOver) {
+        restart.style.display = "flex"
+        return
     }
 
     let speed = document.getElementById("speed").value
-    if(speed) {
+    if (speed) {
         SnakeSpeed = speed;
     }
 
@@ -65,20 +67,21 @@ function main(currTime) {            // game loop function
     draw();
 }
 
-    window.requestAnimationFrame(main) // requesting window that when to render next frame
+window.requestAnimationFrame(main) // requesting window that when to render next frame
 
 
-start_btn.addEventListener("click",()=>{
+start_btn.addEventListener("click", () => {
     load_template.style.top = "-100%"
 })
-start_btn2.addEventListener("click",()=>{
+start_btn2.addEventListener("click", () => {
     load_template.style.top = "-100%"
 })
-setting_main.addEventListener("click",()=>{
+setting_main.addEventListener("click", () => {
     hide_adv.style.display = "block"
     hide_main.style.display = "none"
 })
-setting_Adv.addEventListener("click",()=>{
-     hide_adv.style.display = "none"
+setting_Adv.addEventListener("click", () => {
+    hide_adv.style.display = "none"
     hide_main.style.display = "block"
 })
+
