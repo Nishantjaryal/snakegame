@@ -67,6 +67,7 @@ body {
   height: 80vh;
   background-color: #000000;
   box-shadow: 0 0 10px rgb(51, 51, 51);
+  gap: 10px;
 }
 
 #config input{
@@ -80,7 +81,7 @@ body {
 
 }
 
-#start ,#run ,#start2{
+#start ,#run ,#start2,#reset{
   padding: 15px 37px;
   background-color: rgb(12, 173, 12);
   color: #000000;

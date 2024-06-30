@@ -1,5 +1,7 @@
 import { onSnake, expandSnake } from "./snake.js";
 
+const reset_btn = document.getElementById("reset")
+
 let food = {
     x:2,
     y:2
@@ -31,6 +33,9 @@ export function draw(gameBoard) {
         FoodBlock.style.gridRowStart = food.y;
         FoodBlock.style.gridColumnStart = food.x;
         FoodBlock.classList.add('food')
+
+        
+
         if(document.getElementById("img_food").value){
             
         }
@@ -38,3 +43,4 @@ export function draw(gameBoard) {
         gameBoard.appendChild(FoodBlock)
 
 }
+
