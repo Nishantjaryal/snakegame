@@ -143,7 +143,7 @@ body {
 .hide_{
   display: none;
 }
-
+/* 
 #filter {
   display: none;
   z-index: 101;
@@ -161,7 +161,7 @@ body {
   color: green;
   text-align: center;
   display: block;
-}
+} */
 
 #playstation {
   position: relative;
@@ -255,20 +255,59 @@ body {
   background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 1000px) {
+/* @media screen and (max-width: 1000px) {
   #filter{
     display: flex;
     align-items: center;
     justify-content: center;
   }
-}
+} */
 @media screen and (max-width: 800px) {
   #loader {
     justify-content: center;
   }
+
+  
+
   #config {
     border-radius: 10px;
     margin-right: 0vw;
     
   }
+}
+@media screen and (max-width: 1110px) {
+
+
+  #score{
+    display: none;
+  }
+
+  
+}
+
+
+
+#controls{
+  margin-top: 30px;
+  position: absolute;
+  bottom: 10px;
+  }
+  
+
+
+  
+.btn{
+  padding: 15px 25px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 0 20px black;
+  transition: all .4s;
+  text-transform: uppercase;
+  font-weight: 800;
+  cursor: pointer;
+
+}
+
+.btn:hover{
+  background-color: rgb(200, 250, 200);
 }

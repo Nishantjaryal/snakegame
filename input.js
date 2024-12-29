@@ -8,6 +8,25 @@ let inputDirections = { // by x and y coordinations we satisfy iwhich direction 
 }
 
 
+
+document.querySelector("#up").addEventListener("click", function () {
+    inputDirections = { x: 0, y: -1 }
+
+})
+document.querySelector("#down").addEventListener("click", function () {
+    inputDirections = { x: 0, y: 1 }
+
+})
+document.querySelector("#right").addEventListener("click", function () {
+    inputDirections = { x: 1, y: 0 }
+
+})
+document.querySelector("#left").addEventListener("click", function () {
+    inputDirections = { x: -1, y: 0 }
+
+})
+
+
 let prevKey = '';
 window.addEventListener('keydown', e => {
 
